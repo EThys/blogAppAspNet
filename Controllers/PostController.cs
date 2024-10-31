@@ -10,6 +10,7 @@ namespace blogApp.Controllers
     [ApiController]
     public class PostController : ControllerBase
     {
+        
 
         private readonly AppDbContext _context;
         public PostController(AppDbContext context)

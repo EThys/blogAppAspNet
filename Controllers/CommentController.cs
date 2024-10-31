@@ -9,6 +9,7 @@ namespace blogApp.Controllers
     [ApiController]
     public class CommentController : ControllerBase
     {
+        
         private readonly AppDbContext _context;
         public CommentController(AppDbContext context)
         {

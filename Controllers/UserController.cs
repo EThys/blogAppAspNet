@@ -9,6 +9,7 @@ namespace blogApp.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        
         private readonly AppDbContext _context;
         public UserController(AppDbContext context)
         {
