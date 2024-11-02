@@ -1,5 +1,6 @@
 ﻿using blogApp.Models;
 using blogApp.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -139,6 +140,49 @@ namespace blogApp.Controllers
                 Success = true,
                 Message = "Authentication successful.",
                 Data = tokenResponse
+            };
+        }
+        [Authorize]
+        [HttpPost("changePassword")]
+        public async Task<ApiResponse<User>> ChangePassword([FromBody] ChangePasswordModel changePasswordModel)
+        {
+            if (string.IsNullOrWhiteSpace(changePasswordModel.Username) ||
+                string.IsNullOrWhiteSpace(changePasswordModel.NewPassword))
+            {
+                return new ApiResponse<User>
+                {
+                    Success = false,
+                    Message = "Username and new password are required.",
+                    Data = null
+                };
+            }
+
+            var userAccount = await _context.Users.FirstOrDefaultAsync(x => x.UserName == changePasswordModel.Username);
+
+            if (userAccount == null)
+            {
+                return new ApiResponse<User>
+                {
+                    Success = false,
+                    Message = "Invalid username.",
+                    Data = null
+                };
+            }
+
+           
+            PasswordHasher.CreatePasswordHash(changePasswordModel.NewPassword, out byte[] newPasswordHash, out byte[] newPasswordSalt);
+
+            userAccount.UserPassword = Convert.ToBase64String(newPasswordHash);
+            userAccount.UserSalt = Convert.ToBase64String(newPasswordSalt);
+
+            _context.Users.Update(userAccount);
+            await _context.SaveChangesAsync();
+
+            return new ApiResponse<User>
+            {
+                Success = true,
+                Message = "Password changed successfully.",
+                Data = userAccount
             };
         }
     }

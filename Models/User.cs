@@ -23,4 +23,10 @@
         public int? ExpiresIn { get; set; }
         public string? UserSalt { get; set; }
     }
+
+    public class ChangePasswordModel
+    {
+        public string ? Username { get; set; }
+        public string ? NewPassword { get; set; }
+    }
 }
