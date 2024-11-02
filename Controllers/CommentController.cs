@@ -1,4 +1,5 @@
 ﻿using blogApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,7 @@ namespace blogApp.Controllers
             public string? Message { get; set; }
             public T? Data { get; set; }
         }
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<ApiResponse<IEnumerable<Comment>>>> GetComments()
         {
@@ -41,6 +43,7 @@ namespace blogApp.Controllers
             return Ok(response);
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<ApiResponse<Comment>>> GetComment(int id)
         {
@@ -69,6 +72,7 @@ namespace blogApp.Controllers
 
             return Ok(response);
         }
+        [Authorize]
         [HttpPost]
         public async Task<ApiResponse<Comment>> Store(Comment comment)
         {

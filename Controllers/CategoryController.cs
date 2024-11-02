@@ -21,6 +21,7 @@ namespace blogApp.Controllers
             public string? Message { get; set; }
             public T? Data { get; set; }
         }
+        
         [HttpGet]
         public async Task<ActionResult<ApiResponse<IEnumerable<Category>>>> GetCategories()
         {
