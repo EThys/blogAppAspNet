@@ -140,3 +140,5 @@ C:\Users\lenovo\source\repos\blogApp\obj\Debug\net8.0\refint\blogApp.dll
 C:\Users\lenovo\source\repos\blogApp\obj\Debug\net8.0\blogApp.pdb
 C:\Users\lenovo\source\repos\blogApp\obj\Debug\net8.0\blogApp.genruntimeconfig.cache
 C:\Users\lenovo\source\repos\blogApp\obj\Debug\net8.0\ref\blogApp.dll
+C:\Users\lenovo\source\repos\blogApp\obj\Debug\net8.0\blogApp.sourcelink.json
+C:\Users\lenovo\source\repos\blogApp\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

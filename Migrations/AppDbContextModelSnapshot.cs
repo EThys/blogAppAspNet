@@ -126,6 +126,12 @@ namespace blogApp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
 
+                    b.Property<string>("AccessToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ExpiresIn")
+                        .HasColumnType("int");
+
                     b.Property<string>("UserCountry")
                         .HasColumnType("nvarchar(max)");
 
@@ -136,6 +142,9 @@ namespace blogApp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserPassword")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserSalt")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserState")
