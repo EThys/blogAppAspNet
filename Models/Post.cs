@@ -8,8 +8,6 @@ namespace blogApp.Models
         public int PostId { get; set; }
         public int UserId { get; set; }
         public User ? User { get; set; }
-
-        [Required(ErrorMessage = "CategoryFId est requis")]
         public int CategoryId { get; set; }
         public Category? Category { get; set; }
 
